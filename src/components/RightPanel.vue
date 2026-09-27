@@ -1,14 +1,32 @@
 <script setup lang="ts">
+import StatDesc from "@/components/StatDesc.vue";
+import ChangeCity from "@/components/ChangeCity.vue";
 
-import Button from "@/components/Button/Button.vue";
+const data = {
+  humidity: {
+    label: "humidity",
+    value: "90%",
+  },
+  precipitation: {
+    label: "precipitation",
+    value: "0%",
+  },
+  wind: {
+    label: "wind",
+    value: "3 m/h",
+  }
+}
 </script>
 
 <template>
   <div class="right-panel">
-<div>тайтл</div>
+<div class="right-panel-titles">
+  <StatDesc v-bind="data.humidity" />
+  <StatDesc v-bind="data.precipitation" />
+  <StatDesc v-bind="data.wind" />
+</div>
   <div>карты</div>
-  <Button> <template #icon> +
-  </template> Изменить город</Button>
+  <ChangeCity />
   </div>
 </template>
 
@@ -18,5 +36,10 @@ import Button from "@/components/Button/Button.vue";
   flex-direction: column;
   justify-content: space-around;
 
+}
+.right-panel-titles {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 </style>
